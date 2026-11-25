@@ -1,0 +1,69 @@
+{
+  "title": "Roadrunner Multi-Environment Asset Pack",
+  "units": "meters",
+  "coordinate_system": "Y-up; ground centered around X=0, Z=0; robot start at (0,0,0); ground height at robot start (0,0) is y=0 for all five scenes",
+  "recommended_scene_extent_m": {
+    "x": 3.4,
+    "z": 3.4
+  },
+  "files": [
+    {
+      "file": "flat-ground.glb",
+      "environment": "Flat Ground",
+      "ground_node": "Ground",
+      "obstacle_nodes": [],
+      "notes": "Tiled concrete test plane."
+    },
+    {
+      "file": "hilly-terrain.glb",
+      "environment": "Hilly Terrain",
+      "ground_node": "Ground",
+      "obstacle_nodes": [
+        "Obstacle_Hill_Rock_A",
+        "Obstacle_Hill_Rock_B"
+      ],
+      "notes": "Continuous heightfield with a rising slope and broad shoulder."
+    },
+    {
+      "file": "obstacle-park.glb",
+      "environment": "Obstacle Park",
+      "ground_node": "Ground",
+      "obstacle_nodes": [
+        "Obstacle_StepStone_01",
+        "Obstacle_StepStone_02",
+        "Obstacle_StepStone_03",
+        "Obstacle_Log_A",
+        "Obstacle_Block_A"
+      ],
+      "notes": "Grass ground plus individually named stepping stones, log and block. Decor_ objects are visual-only."
+    },
+    {
+      "file": "sandy-beach.glb",
+      "environment": "Sandy Beach",
+      "ground_node": "Ground",
+      "obstacle_nodes": [
+        "Obstacle_Beach_Rock_A",
+        "Obstacle_Beach_Rock_B"
+      ],
+      "notes": "Undulating sand heightfield with a relatively smoother central corridor."
+    },
+    {
+      "file": "urban-sidewalk.glb",
+      "environment": "Urban Sidewalk",
+      "ground_node": "Ground",
+      "obstacle_nodes": [
+        "Obstacle_Curb_Left",
+        "Obstacle_Curb_Right",
+        "Obstacle_Raised_Slab"
+      ],
+      "notes": "Concrete sidewalk with raised curb strips and a raised slab."
+    }
+  ],
+  "integration": {
+    "public_directory": "public/environments/ (or ./environments/ if this project serves assets from repository root)",
+    "loader": "THREE.GLTFLoader",
+    "ground_sampling": "Find node named Ground and raycast against its mesh. Do not raycast against obstacle nodes when sampling terrain height.",
+    "obstacle_detection": "Find nodes whose names begin with Obstacle_. Decor_ nodes are visual-only.",
+    "important": "These are kinematic demonstration assets, not physically validated terrain or collision meshes."
+  }
+}
